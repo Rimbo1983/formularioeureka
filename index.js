@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post('/', async (req, res) => {
   console.log('Datos recibidos:', req.body);
 
-  const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbzfl389Wc-2zDyqWB2UBFpRvUtUC0aQ8t7DgEtypVcauuUpkyuhtE8JPF7cKLNlEwqF/exec';
+  const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbzwW7Fc_JyoPxICjdPUsZAThcyNu6Ev-MnpcCp_AkcWsBwmfVjJGCgOsUrZNm-dbsr5/exec';
 
   try {
     const response = await fetch(googleAppsScriptURL, {
