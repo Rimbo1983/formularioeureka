@@ -10,7 +10,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/', async (req, res) => {
-console.log('Datos recibidos:', req.body);
+  console.log('Datos recibidos:', req.body);
+
   const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbzfl389Wc-2zDyqWB2UBFpRvUtUC0aQ8t7DgEtypVcauuUpkyuhtE8JPF7cKLNlEwqF/exec';
 
   try {
@@ -20,7 +21,10 @@ console.log('Datos recibidos:', req.body);
       body: JSON.stringify(req.body)
     });
 
-    const data = await response.json();
+    const rawText = await response.text(); // ✅ obtenemos respuesta cruda
+    console.log("Respuesta cruda del Apps Script:", rawText); // ✅ mostramos en log
+
+    const data = JSON.parse(rawText); // intentamos parsear
     res.json(data);
   } catch (error) {
     console.error('Error al reenviar al Apps Script:', error);
