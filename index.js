@@ -10,6 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/', async (req, res) => {
+console.log('Datos recibidos:', req.body);
   const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbwaf0U4UtCOhJYZ_-o_AVJe_uxXsGEsKSdjuglhpYUdJh6EAYoUCwVc384m_SvPwwwtsA/exec';
 
   try {
