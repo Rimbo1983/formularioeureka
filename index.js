@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Ruta GET para health check (necesaria en Render)
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.post('/', async (req, res) => {
   console.log('Datos recibidos:', req.body);
 
@@ -21,10 +26,10 @@ app.post('/', async (req, res) => {
       body: JSON.stringify(req.body)
     });
 
-    const rawText = await response.text(); // ✅ obtenemos respuesta cruda
-    console.log("Respuesta cruda del Apps Script:", rawText); // ✅ mostramos en log
+    const rawText = await response.text();
+    console.log("Respuesta cruda del Apps Script:", rawText);
 
-    const data = JSON.parse(rawText); // intentamos parsear
+    const data = JSON.parse(rawText);
     res.json(data);
   } catch (error) {
     console.error('Error al reenviar al Apps Script:', error);
